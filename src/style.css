@@ -1,0 +1,339 @@
+@import "tailwindcss";
+
+#hamburger span {
+  display: block;
+  width: 24px; /* w-6 */
+  height: 2px; /* Dibuat sedikit lebih tebal agar terlihat jelas */
+  margin: 6px 0; /* Beri jarak vertikal antar garis */
+  background-color: #1e293b; /* Warna slate-800 */
+  transition: all 300ms ease-in-out;
+}
+
+/* Style garis saat dark mode aktif */
+.dark #hamburger span {
+  background-color: #f8fafc; /* Warna white */
+}
+
+/* Style saat tombol hamburger memiliki class 'hamburger-active' */
+
+/* Garis atas: Geser ke bawah, lalu putar 45 derajat */
+.hamburger-active > span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+/* Garis tengah: Hilang (menjadi transparan dan mengecil) */
+.hamburger-active > span:nth-child(2) {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* Garis bawah: Geser ke atas, lalu putar -45 derajat */
+.hamburger-active > span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: transparent;
+
+  /* ======================================== */
+  /* A. PALET WARNA DASAR            */
+  /* ======================================== */
+  /* Beri nama deskriptif untuk setiap warna */
+
+  /* Warna Gelap & Netral */
+  --color-midnight: #100a36;
+  --color-midnight-33: #100a3654; /* 33% Transparansi */
+  --color-charcoal: #5c535e;
+
+  /* Warna Abu-abu (Grays) */
+  --color-slate: #94a3b8;
+  --color-light-slate: #9ea9c4;
+  --color-dark-slate: #9ea9c454;
+  --color-mauve: #8e878f;
+
+  /* Warna Aksen */
+  --color-apa: #a777da;
+  --color-lavender: #bb9fd8;
+  --color-dark-lavender: #8a6ea8d5;
+
+  /* ======================================== */
+  /* B. PALET FUNGSIONAL / SEMANTIK      */
+  /* ======================================== */
+  /* Gunakan variabel dari atas untuk menentukan peran setiap warna.
+     Ini membuat website Anda super fleksibel untuk diubah di kemudian hari. */
+
+  /* -- Latar Belakang (Backgrounds) -- */
+  --bg-primary: var(--color-midnight); /* Untuk background utama halaman */
+  --bg-secondary: var(--color-charcoal); /* Untuk background card/komponen */
+  --bg-accent: var(
+    --color-lavender
+  ); /* Untuk background elemen yang butuh perhatian */
+  --overlay-dark: var(
+    --color-midnight-33
+  ); /* Untuk lapisan overlay transparan */
+
+  /* -- Teks (Typography) -- */
+  --text-primary: var(--color-light-slate); /* Teks utama di background gelap */
+  --text-secondary: var(--color-slate); /* Teks pendukung, deskripsi */
+  --text-tertiary: var(
+    --color-mauve
+  ); /* Teks yang tidak terlalu penting, footer */
+  --text-accent: var(
+    --color-lavender
+  ); /* Teks yang menjadi link atau highlight */
+  --text-on-accent: var(
+    --color-midnight
+  ); /* Teks di atas tombol/background berwarna aksen */
+
+  /* -- Aksi & Batas (Actions & Borders) -- */
+  --action-primary: var(
+    --color-lavender
+  ); /* Warna utama untuk tombol dan link */
+  --border-primary: var(
+    --color-charcoal
+  ); /* Warna border untuk card, input, dll. */
+  --border-focus: var(
+    --color-lavender
+  ); /* Warna border saat input/tombol di-fokus */
+}
+
+input:checked ~ .dot {
+  transform: translateX(100%);
+}
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  list-style-type: none;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #5d535e;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.07) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 30px 30px; /* Atur jarak grid */
+  color: white; /* Pastikan teks default terlihat */
+}
+
+.glow-blue-badge:hover {
+  font-weight: bold;
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.text-glow-dark {
+  filter: drop-shadow(0 0 2em #e201f7);
+}
+
+.text-glow-bdark:hover {
+  z-index: -1;
+  font-weight: bold;
+  filter: drop-shadow(0 0 1em #100a36);
+}
+
+.text {
+  transition: color 0.5s ease;
+}
+
+.text.active {
+  color: #000000;
+}
+
+@keyframes subtle-pulse {
+  0% {
+    /* Keadaan awal: tidak ada bayangan, ukuran normal */
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(196, 181, 253, 0.7); /* Warna ungu muda, transparan */
+  }
+
+  70% {
+    /* Keadaan puncak: sedikit membesar dan ada bayangan 'glow' */
+    transform: scale(1.03);
+    box-shadow: 0 0 0 10px rgba(196, 181, 253, 0); /* Bayangan memudar */
+  }
+
+  100% {
+    /* Kembali ke keadaan awal */
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(196, 181, 253, 0);
+  }
+}
+
+/* 2. Membuat class untuk menerapkan animasi ini */
+/* Kita akan panggil class ini di React */
+.animate-attention {
+  animation: subtle-pulse 2s infinite; /* Terapkan animasi 'subtle-pulse', durasi 2 detik, berulang terus */
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Efek Hover Tombol Kustom - VERSI PERBAIKAN */
+
+.button-wipe-effect {
+  position: relative;
+  overflow: hidden; /* Sembunyikan ::before yang keluar dari tombol */
+  isolation: isolate; /* Mencegah z-index bentrok */
+}
+
+.button-wipe-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-dark-lavender);
+  z-index: -1;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.button-wipe-effect:hover::before {
+  transform: translateY(0);
+}
+
+.button-wipe-effect .button-content img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.button-wipe-effect:hover .button-content img {
+  transform: rotate(90deg);
+}
+
+.text-spotlight-effect {
+  background-image: linear-gradient(
+      to right,
+      transparent 20%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 80%
+    ),
+    linear-gradient(to bottom right, #100a3654, #100a36);
+
+  /* 2. Atur ukuran background */
+  background-size: 200% auto, 100% auto;
+
+  /* 3. Klip background ke bentuk teks (ini kuncinya) */
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text; /* Untuk browser Safari/Chrome */
+
+  /* 4. Terapkan animasi yang akan kita buat di bawah */
+  animation: spotlight-shine 5s linear infinite;
+
+  background-image: linear-gradient(
+      to right,
+      transparent 20%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 80%
+    ),
+    linear-gradient(to bottom right, #94a3b8, #bb9fd8);
+  background-size: 200% auto, 100% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  /* 👇 TAMBAHKAN ANIMASI BARU DI SINI, PISAHKAN DENGAN KOMA 👇 */
+  animation: spotlight-shine 5s linear infinite,
+    /* <-- Animasi senter yang sudah ada */ pulsing-shadow 4s ease-in-out
+      infinite;
+}
+
+.text-spotlight-effect2 {
+  background-image: linear-gradient(
+      to right,
+      transparent 20%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 80%
+    ),
+    linear-gradient(to bottom right, #100a3654, #100a36);
+
+  /* 2. Atur ukuran background */
+  background-size: 200% auto, 100% auto;
+
+  /* 3. Klip background ke bentuk teks (ini kuncinya) */
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text; /* Untuk browser Safari/Chrome */
+
+  /* 4. Terapkan animasi yang akan kita buat di bawah */
+  animation: spotlight-shine 5s linear infinite;
+
+  background-image: linear-gradient(
+      to right,
+      transparent 20%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 80%
+    ),
+    linear-gradient(to bottom right, #9db2cf, #a384c5);
+  background-size: 200% auto, 100% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  /* 👇 TAMBAHKAN ANIMASI BARU DI SINI, PISAHKAN DENGAN KOMA 👇 */
+  animation: spotlight-shine 5s linear infinite,
+    /* <-- Animasi senter yang sudah ada */ pulsing-shadow 4s ease-in-out
+      infinite;
+}
+
+/* Efek Glow Statis untuk Teks */
+.text-glow-purple {
+  /* text-shadow: [sumbu-x] [sumbu-y] [radius-blur] [warna]; */
+  text-shadow: 5px 8px 20px rgba(233, 213, 255, 0.644); /* Warna purple-400 dengan transparansi */
+}
+
+.text-glow-purpled {
+  /* text-shadow: [sumbu-x] [sumbu-y] [radius-blur] [warna]; */
+  text-shadow: 0px 0px 20px #94a3b8; /* Warna purple-400 dengan transparansi */
+}
+
+/* 5. Definisikan animasi untuk menggerakkan 'senter' */
+@keyframes spotlight-shine {
+  to {
+    /* Geser posisi background lapisan atas (senter) dari kanan ke kiri */
+    background-position: -200% center, 0 0;
+  }
+}
+
+/* Keyframes untuk animasi bayangan berdenyut */
+@keyframes pulsing-shadow {
+  0% {
+    /* Keadaan awal: bayangan tipis dan dekat */
+    filter: drop-shadow(0 0 4px rgba(233, 213, 255, 0.5));
+  }
+  70% {
+    /* Puncak animasi: bayangan menyebar (buyar) dan sedikit pudar */
+    filter: drop-shadow(0 0 20px rgba(233, 213, 255, 0.2));
+  }
+  100% {
+    /* Kembali ke keadaan awal untuk loop yang mulus */
+    filter: drop-shadow(0 0 4px rgba(233, 213, 255, 0.5));
+  }
+}
