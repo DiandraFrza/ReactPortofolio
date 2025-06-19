@@ -27,6 +27,25 @@ function App() {
       {" "}
       <MorphingBlob />
       <main className="relative z-100">
+        <div className="w-screen h-screenoverflow-hidden">
+          {/* Blob pertama */}
+          <MorphingBlob
+            className="-top-1/4 -left-1/4" // Posisi pertama (agak ke kiri atas)
+            style={{
+              background:
+                "radial-gradient(circle, rgba(9, 57, 97, 0.4), transparent 70%)",
+            }}
+          />
+
+          {/* Blob kedua */}
+          <MorphingBlob
+            className="-bottom-1/4 -right-1/4" // Posisi kedua (agak ke kanan bawah)
+            style={{
+              background:
+                "radial-gradient(circle, rgba(110, 12, 102, 0.4), transparent 70%)",
+            }}
+          />
+        </div>
         <Header />
         <Hero />
         <About />

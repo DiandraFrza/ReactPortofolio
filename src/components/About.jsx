@@ -18,8 +18,6 @@ function About() {
             >
               About Me
             </h2>
-
-            {/* Ini adalah garis pendek dan tebal di sebelahnya */}
             <div
               className="w-20 h-1 rounded-[4px] bg-gray-300 dark:bg-gray-700"
               data-aos="fade-left"
@@ -27,7 +25,6 @@ function About() {
             ></div>
           </div>
 
-          {/* DIUBAH: Paragraf digabung agar lebih mengalir dan mudah dibaca */}
           <p
             className="font-medium text-lg text-white-700 dark:text-slate-300 mb-6"
             data-aos="fade-right"
@@ -41,8 +38,6 @@ function About() {
             menciptakan pengalaman digital yang menarik dan selalu berusaha
             memberikan solusi terbaik di setiap proyek yang saya kerjakan.
           </p>
-
-          {/* DISESUAIKAN: Quote dibuat lebih kecil dan subtil */}
           <p
             className="text-sm italic text-white-500 dark:text-[#ffff] mb-8 text-glow-dark"
             data-aos="fade-left"

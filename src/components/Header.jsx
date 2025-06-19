@@ -1,14 +1,11 @@
 // src/components/Header.jsx
 
-import { useState } from "react"; // 1. Import useState dari React
-
+import { useState } from "react";
 function Header() {
-  // 2. Buat "saklar" (state) untuk mengontrol menu. Default-nya false (tertutup).
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // 3. Buat fungsi untuk mengubah state saat tombol diklik
   const handleHamburgerClick = () => {
-    setIsMenuOpen(!isMenuOpen); // Membalik nilai state (dari false ke true, atau sebaliknya)
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -17,7 +14,7 @@ function Header() {
         <div className="flex items-center justify-between">
           <a
             href="#home"
-            className="text-xl font-bold text-slate-300 transition-colors duration-300 hover:text-white transition duration-100"
+            className="text-xl font-bold text-slate-300 transition-colors duration-300 hover:text-[#ede8d0] transition "
             data-aos="fade-right"
           >
             Diandra
@@ -29,7 +26,6 @@ function Header() {
             <button
               id="hamburger"
               type="button"
-              // 4. Tambahkan event onClick dan class dinamis berdasarkan state
               onClick={handleHamburgerClick}
               className={`relative z-[9999] group ${
                 isMenuOpen ? "hamburger-active" : ""
@@ -44,7 +40,6 @@ function Header() {
           {/* Menu Navigasi */}
           <nav
             id="nav-menu"
-            // 5. Tampilkan/sembunyikan menu berdasarkan state 'isMenuOpen'
             className={`absolute top-full right-5 w-auto rounded-lg bg-white shadow-lg lg:static lg:block lg:w-auto lg:shadow-none lg:bg-transparent dark:lg:bg-transparent ${
               !isMenuOpen ? "hidden" : ""
             }`}
@@ -53,8 +48,7 @@ function Header() {
               <li>
                 <a
                   href="#home"
-                  // PERBAIKAN: 'class' diubah jadi 'className' dan ditambahkan 'whitespace-nowrap'
-                  className="whitespace-nowrap gap-2 text-[#100a36] font-semibold py-1 px-2 hover:gap-2 hover:rounded-md hover:bg-[#100a36] hover:py-1 hover:px-2 hover:font-semibold hover:text-white transition duration-100"
+                  className="whitespace-nowrap gap-2 text-[#100a36] font-semibold py-1 px-2 hover:gap-2 hover:rounded-md hover:bg-[#100a36] hover:py-1 hover:px-2 hover:font-semibold hover:text-white transition "
                 >
                   Home
                 </a>
@@ -62,7 +56,7 @@ function Header() {
               <li>
                 <a
                   href="#about"
-                  className="whitespace-nowrap gap-2 text-[#100a36] font-semibold py-1 px-2 hover:gap-2 hover:rounded-md hover:bg-[#100a36] hover:py-1 hover:px-2 hover:font-semibold hover:text-white transition duration-100"
+                  className="whitespace-nowrap gap-2 text-[#100a36] font-semibold py-1 px-2 hover:gap-2 hover:rounded-md hover:bg-[#100a36] hover:py-1 hover:px-2 hover:font-semibold hover:text-white transition "
                 >
                   About
                 </a>
@@ -70,7 +64,7 @@ function Header() {
               <li>
                 <a
                   href="#projects"
-                  className="whitespace-nowrap gap-2 text-[#100a36] font-semibold py-1 px-2 hover:gap-2 hover:rounded-md hover:bg-[#100a36] hover:py-1 hover:px-2 hover:font-semibold hover:text-white transition duration-100"
+                  className="whitespace-nowrap gap-2 text-[#100a36] font-semibold py-1 px-2 hover:gap-2 hover:rounded-md hover:bg-[#100a36] hover:py-1 hover:px-2 hover:font-semibold hover:text-white transition "
                 >
                   Project
                 </a>
@@ -78,7 +72,7 @@ function Header() {
               <li>
                 <a
                   href="#contact"
-                  className="whitespace-nowrap gap-2 text-[#100a36] font-semibold py-1 px-2 hover:gap-2 hover:rounded-md hover:bg-[#100a36] hover:py-1 hover:px-2 hover:font-semibold hover:text-white transition duration-100"
+                  className="whitespace-nowrap gap-2 text-[#100a36] font-semibold py-1 px-2 hover:gap-2 hover:rounded-md hover:bg-[#100a36] hover:py-1 hover:px-2 hover:font-semibold hover:text-white transition "
                 >
                   Contact
                 </a>

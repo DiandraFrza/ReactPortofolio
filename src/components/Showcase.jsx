@@ -8,16 +8,15 @@ import Certificates from "./Certificates";
 // #94a3b8, #bb9fd8
 // ICON
 import ProjectIcon from "../assets/img/icon/project.svg";
-import SkillsIcon from "../assets/img/icon/skills.svg";
+import SkillsIcon from "../assets/img/icon/skill-5.svg";
 import CertificateIcon from "../assets/img/icon/certificate.svg";
 
 function Showcase() {
   const [activeTab, setActiveTab] = useState("projects");
 
   const getButtonClass = (tabName) => {
-    // Tambahkan 'relative' dan 'z-10' agar tombol berada di atas garis
     return `
-      p-5 rounded-full font-semibold transition-all duration-300 transform relative z-10
+      p-4 rounded-full font-semibold transition-all duration-300 transform relative z-10
       ${
         activeTab === tabName
           ? "bg-[#94a3b8] text-white scale-110 shadow-lg"
@@ -29,11 +28,7 @@ function Showcase() {
   return (
     <section id="showcase" className="py-16">
       <div className="container mx-auto px-4">
-        {/* Wrapper untuk tombol dan garis penghubung */}
-        <div
-          className="relative mb-12 flex justify-center"
-          data-aos="fade-down"
-        >
+        <div className="relative mb-12 flex justify-center" data-aos="zoom-out">
           <div className="relative w-full max-w-md flex justify-between items-center">
             {/* Garis Penghubung (di belakang tombol) */}
             <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-700 transform -translate-y-1/2"></div>
@@ -46,9 +41,8 @@ function Showcase() {
               <img
                 src={ProjectIcon}
                 alt="Project Icon"
-                className="w-7 h-7 md:w-10 md:h-10"
+                className="w-4 h-4 md:w-10 md:h-10"
               />{" "}
-              {/* Sesuaikan ukuran ikon */}
             </button>
             <button
               onClick={() => setActiveTab("skills")}
@@ -57,9 +51,8 @@ function Showcase() {
               <img
                 src={SkillsIcon}
                 alt="Skills Icon"
-                className="w-7 h-7 md:w-10 md:h-10"
+                className="w-4 h-4 md:w-10 md:h-10"
               />{" "}
-              {/* Sesuaikan ukuran ikon */}
             </button>
             <button
               onClick={() => setActiveTab("certificates")}
@@ -68,7 +61,7 @@ function Showcase() {
               <img
                 src={CertificateIcon}
                 alt="Certificate Icon"
-                className="w-7 h-7 md:w-10 md:h-10" /* Sesuaikan ukuran ikon */
+                className="w-4 h-4 md:w-10 md:h-10"
               />
             </button>
           </div>

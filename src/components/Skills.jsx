@@ -2,7 +2,6 @@
 
 import SkillBadge from "./SkillBadge"; // Import komponen badge
 
-// Import semua ikon yang kamu butuhkan
 import htmlIcon from "../assets/img/icon/html5.svg";
 import cssIcon from "../assets/img/icon/css3.svg";
 import phpIcon from "../assets/img/icon/php.svg";
@@ -21,7 +20,6 @@ import calcIcon from "../assets/img/icon/libreofficecalc.svg";
 import laragonIcon from "../assets/img/icon/laragon.svg";
 import xamppIcon from "../assets/img/icon/xampp.svg";
 
-// 1. PISAHKAN DATA DARI TAMPILAN
 const skillsData = [
   { name: "HTML", icon: htmlIcon },
   { name: "CSS", icon: cssIcon },
@@ -49,13 +47,12 @@ function Skills() {
   return (
     <div className="mt-10">
       <h3
-        className="mb-4 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-spotlight-effect2"
+        className="text-center mb-18 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-spotlight-effect2"
         data-aos="fade-down"
       >
         Skills & Abilities
       </h3>
       <div className="flex flex-wrap items-center gap-4">
-        {/* 2. GUNAKAN .MAP() UNTUK RENDER SEMUA SKILL */}
         {skillsData.map((skill) => (
           <SkillBadge key={skill.name} name={skill.name} icon={skill.icon} />
         ))}
@@ -63,11 +60,11 @@ function Skills() {
 
       <div
         className="mt-6 mb-4 w-full h-1 bg-gray-300 dark:bg-gray-700"
-        data-aos="fade-right"
+        data-aos="zoom-out"
       ></div>
 
       <h3
-        className="mb-4 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-glow-purpled"
+        className="text-center mb-4 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-glow-purpled"
         data-aos="fade-down"
       >
         Tools

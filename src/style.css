@@ -33,10 +33,10 @@
 }
 
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: center; */
   background-color: transparent;
 
   /* ======================================== */
@@ -274,15 +274,12 @@ body {
     ),
     linear-gradient(to bottom right, #100a3654, #100a36);
 
-  /* 2. Atur ukuran background */
   background-size: 200% auto, 100% auto;
 
-  /* 3. Klip background ke bentuk teks (ini kuncinya) */
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text; /* Untuk browser Safari/Chrome */
 
-  /* 4. Terapkan animasi yang akan kita buat di bawah */
   animation: spotlight-shine 5s linear infinite;
 
   background-image: linear-gradient(
@@ -297,10 +294,8 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
 
-  /* 👇 TAMBAHKAN ANIMASI BARU DI SINI, PISAHKAN DENGAN KOMA 👇 */
   animation: spotlight-shine 5s linear infinite,
-    /* <-- Animasi senter yang sudah ada */ pulsing-shadow 4s ease-in-out
-      infinite;
+    pulsing-shadow 4s ease-in-out infinite;
 }
 
 /* Efek Glow Statis untuk Teks */

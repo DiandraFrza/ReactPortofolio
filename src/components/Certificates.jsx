@@ -13,7 +13,6 @@ function Certificates() {
       </div>
       <div className="text-center text-slate-300">
         <p>Konten sertifikat akan ditampilkan di sini.</p>
-        {/* Nanti kamu bisa map data sertifikat di sini, sama seperti data proyek */}
       </div>
     </div>
   );

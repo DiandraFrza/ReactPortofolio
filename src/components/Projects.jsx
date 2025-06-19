@@ -31,7 +31,7 @@ const ProjectCard = ({
             "https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found";
         }}
       />
-      <h3 className="text-xl font-semibold text-dark" data-aos="flip-up">
+      <h3 className="text-xl font-bold text-[#94a3b8]" data-aos="flip-up">
         {title}
       </h3>
       <p className="mt-2 text-sm text-slate-600" data-aos="flip-up">
@@ -45,15 +45,16 @@ const ProjectCard = ({
           href={demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md bg-[#D0B684] px-4 py-2 font-semibold text-gray-900 transition hover:bg-[#bba36a]"
+          className="rounded-md bg-[#bb9fd8] px-4 py-2 font-semibold text-gray-800 transition hover:bg-[#c8b6db] hover:text-black"
         >
           Live Demo
         </a>
+        {/*rgb(200, 183, 219) */}
         <a
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md bg-[#D0B684] px-4 py-2 font-semibold text-gray-900 transition hover:bg-[#bba36a]"
+          className="rounded-md bg-[#bb9fd8] px-4 py-2 font-semibold text-gray-800 transition hover:bg-[#c8b6db] hover:text-black"
         >
           GitHub
         </a>
@@ -62,10 +63,7 @@ const ProjectCard = ({
   );
 };
 
-// --- Komponen Induk: ProjectsSection ---
-// Komponen ini juga tidak diekspor secara default.
 const ProjectsSection = () => {
-  // Data untuk proyek bisa disimpan dalam sebuah array of objects
   const projects = [
     {
       imageUrl: "assets/img/project/laundryapp.png",
@@ -100,7 +98,6 @@ const ProjectsSection = () => {
       demoUrl: "#",
       githubUrl: "#",
     },
-    // Tambahkan proyek lain di sini
   ];
 
   return (

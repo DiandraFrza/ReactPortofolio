@@ -1,6 +1,5 @@
 // src/components/Footer.jsx
 
-// 1. Import semua ikon sosial media dari folder assets
 import githubIcon from "../assets/img/icon/github.svg";
 import linkedinIcon from "../assets/img/icon/in.svg";
 import instagramIcon from "../assets/img/icon/instagram.svg";
@@ -21,7 +20,6 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {/* 2. Gunakan variabel hasil import dan beri filter invert untuk dark mode */}
               <img
                 src={githubIcon}
                 alt="GitHub"
