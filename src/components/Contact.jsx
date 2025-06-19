@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import defaultImg from "../assets/img/profile/personal-center-24.svg";
+import InfoModal from "./InfoModal";
 
 const testimonials = [
   {
@@ -45,21 +46,11 @@ const testimonials = [
 ];
 
 function Contact() {
-  const [fileName, setFileName] = useState("");
-
-  const handleFileChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setFileName(event.target.files[0].name);
-    } else {
-      setFileName("");
-    }
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleFormClick = (event) => {
-    // Mencegah aksi default form (misal: submit, buka file dialog)
     event.preventDefault();
-    // Tampilkan popup alert
-    alert("Maaf untuk sekarang tidak bisa menggunakan fitur ini.");
+    setIsModalOpen(true);
   };
 
   return (
@@ -69,7 +60,6 @@ function Contact() {
     >
       <div className="absolute inset-0 bg-repeat bg-[url('assets/img/noise-transparent.png')] pointer-events-none"></div>
       <div className="container mx-auto relative z-10 px-4 sm:px-6">
-        {/* UBAH 3: Kurangi margin bawah di mobile */}
         <div className="text-center mb-12 lg:mb-16" data-aos="fade-down">
           <h2 className="mb-4 text-4xl sm:text-6xl font-bold text-spotlight-effect">
             Contact Me
@@ -81,10 +71,9 @@ function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Kolom Kiri: Testimoni Slider */}
           <div data-aos="fade-right">
             <h3 className="text-3xl font-bold text-white mb-8 text-center lg:text-left">
-              Comments (5)
+              Comments ({testimonials.length})
             </h3>
             <Swiper
               modules={[Navigation, Pagination, A11y]}
@@ -118,8 +107,6 @@ function Contact() {
 
           <form
             onClick={handleFormClick}
-            method="POST"
-            encType="multipart/form-data"
             data-aos="fade-left"
             data-aos-delay="200"
             className="bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-[#9db2cf]"
@@ -130,74 +117,66 @@ function Contact() {
                   htmlFor="name"
                   className="block mb-2 text-base font-medium text-[#9db2cf]"
                 >
-                  Name *
+                  Name
                 </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
-                  required
-                  className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition"
+                  disabled
+                  className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition cursor-not-allowed"
                 />
               </div>
-            </fieldset>
-            <div className="mb-8 w-full">
-              <label
-                htmlFor="message"
-                className="block mb-2 text-base font-medium text-[#9db2cf]"
-              >
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows="5"
-                disabled
-                className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition"
-              ></textarea>
-            </div>
-            <div className="mb-8 w-full">
-              <label
-                htmlFor="attachment"
-                className="block mb-2 text-base font-medium text-[#9db2cf]"
-              >
-                Upload Gambar (Optional)
-              </label>
-              <div className="flex items-center">
+              <div className="mb-6 w-full">
                 <label
-                  htmlFor="attachment"
-                  className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
+                  htmlFor="email"
+                  className="block mb-2 text-base font-medium text-[#9db2cf]"
                 >
-                  Select File
+                  Email
                 </label>
                 <input
-                  type="file"
-                  id="attachment"
-                  name="attachment"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="hidden"
+                  type="email"
+                  id="email"
+                  name="email"
+                  disabled
+                  className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition cursor-not-allowed"
                 />
-                {fileName && (
-                  <span className="ml-4 text-sm text-slate-300 truncate min-w-0">
-                    {fileName}
-                  </span>
-                )}
               </div>
-            </div>
-            <div className="w-full">
-              <button
-                type="submit"
-                disabled
-                className="w-full rounded-md bg-gradient-to-r from-[#a777da] to-blue-600 py-3 px-8 text-base font-semibold text-white transition duration-300 hover:from-[#a777da] hover:to-[#8a6ea8d5] hover:shadow-lg hover:shadow-[#bb9fd8] transform hover:-translate-y-1"
-              >
-                Send Message
-              </button>
-            </div>
+              <div className="mb-8 w-full">
+                <label
+                  htmlFor="message"
+                  className="block mb-2 text-base font-medium text-[#9db2cf]"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  disabled
+                  className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition cursor-not-allowed"
+                ></textarea>
+              </div>
+              <div className="w-full">
+                <button
+                  type="submit"
+                  disabled
+                  className="w-full rounded-md bg-gradient-to-r from-[#a777da] to-blue-600 py-3 px-8 text-base font-semibold text-white transition duration-300 transform cursor-not-allowed"
+                >
+                  Send Message
+                </button>
+              </div>
+            </fieldset>
           </form>
         </div>
       </div>
+
+      <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <h3 className="text-xl font-bold text-white mb-2">Feature Locked</h3>
+        <p className="text-slate-300">
+          Maaf, untuk sekarang form ini belum bisa digunakan.
+        </p>
+      </InfoModal>
     </section>
   );
 }
