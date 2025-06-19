@@ -142,6 +142,34 @@ function Contact() {
                   className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition cursor-not-allowed"
                 ></textarea>
               </div>
+              <div className="mb-8 w-full">More actions
+              <label
+                htmlFor="attachment"
+                className="block mb-2 text-base font-medium text-[#9db2cf]"
+              >
+                Upload Gambar (Optional)
+              </label>
+              <div className="flex items-center">
+                <label
+                  htmlFor="attachment"
+                  className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
+                >
+                  Select File
+                </label>
+                <input
+                  type="file"
+                  id="attachment"
+                  name="attachment"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+                {fileName && (
+                  <span className="ml-4 text-sm text-slate-300 truncate min-w-0">
+                    {fileName}
+                  </span>
+                )}
+              </div>
               <div className="w-full">
                 <button
                   type="submit"
