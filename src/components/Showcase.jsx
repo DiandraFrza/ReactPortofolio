@@ -26,7 +26,7 @@ function Showcase() {
   };
 
   return (
-    <section id="showcase" className="py-16">
+    <section id="portofolio" className="py-16">
       <div className="container mx-auto px-4">
         <div className="relative mb-12 flex justify-center" data-aos="zoom-out">
           <div className="relative w-full max-w-md flex justify-between items-center">
@@ -41,7 +41,7 @@ function Showcase() {
               <img
                 src={ProjectIcon}
                 alt="Project Icon"
-                className="w-4 h-4 md:w-10 md:h-10"
+                className="w-6 h-6 md:w-10 md:h-10"
               />{" "}
             </button>
             <button
@@ -51,7 +51,7 @@ function Showcase() {
               <img
                 src={SkillsIcon}
                 alt="Skills Icon"
-                className="w-4 h-4 md:w-10 md:h-10"
+                className="w-6 h-6 md:w-10 md:h-10"
               />{" "}
             </button>
             <button
@@ -61,7 +61,7 @@ function Showcase() {
               <img
                 src={CertificateIcon}
                 alt="Certificate Icon"
-                className="w-4 h-4 md:w-10 md:h-10"
+                className="w-6 h-6 md:w-10 md:h-10"
               />
             </button>
           </div>

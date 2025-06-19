@@ -75,7 +75,7 @@ function Hero() {
             {/* tombol action in hero */}
             <div className="flex flex-col sm:flex-row gap-8 mb-12">
               <a
-                href="#projects"
+                href="#portofolio"
                 className="w-full sm:w-auto bg-[#100a3654] text-white rounded-lg px-3 py-3 text-sm font-medium transition duration-300 flex items-center justify-center gap-2 button-wipe-effect"
                 data-aos="fade-up"
               >

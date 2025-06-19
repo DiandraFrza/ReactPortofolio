@@ -45,7 +45,7 @@ const toolsData = [
 
 function Skills() {
   return (
-    <div className="mt-10">
+    <div id="skills" className="mt-10">
       <h3
         className="text-center mb-18 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-spotlight-effect2"
         data-aos="fade-down"

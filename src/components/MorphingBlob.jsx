@@ -31,7 +31,8 @@ function MorphingBlob({ className }) {
     <div
       className={`absolute w-[500px] h-[500px] transition-all duration-[3000ms] ease-in-out ${className}`}
       style={{
-        background: "radial-gradient(circle at center,#61636c, #8a6ea8d5)",
+        background:
+          "radial-gradient(circle at center,#61636c,rgba(94, 65, 124, 0.67))",
         // Efek blur yang kuat
         filter: "blur(100px)",
         ...style,

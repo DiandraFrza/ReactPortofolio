@@ -10,7 +10,7 @@ function Footer() {
       <div className="container mx-auto">
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 sm:mb-0">
-            © 2025 Diandra Firza. Dibuat dengan Vue & React.
+            © 2025 Diandra Firza. Made with Vue and React.
           </p>
 
           <div className="flex space-x-6">

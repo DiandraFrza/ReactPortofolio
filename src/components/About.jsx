@@ -6,9 +6,41 @@ import iconfile from "../assets/img/icon/file.svg";
 import iconproject from "../assets/img/icon/multimodal_handeye.svg";
 import Showcase from "./Showcase";
 
+// Import komponen baru dan ikon-ikonnya
+import StatCard from "./StatCard";
+import { GoProjectSymlink, GoShieldCheck, GoTrophy } from "react-icons/go";
+
 function About() {
+  // Data buat kartu statistiknya, biar gampang diubah
+  const statsData = [
+    {
+      icon: <GoProjectSymlink size={24} className="text-slate-300" />,
+      number: "9",
+      title: "Total Projects",
+      description: "Innovative web solutions crafted",
+      aosDelay: "100",
+      href: "#projects",
+    },
+    {
+      icon: <GoShieldCheck size={24} className="text-slate-300" />,
+      number: "???",
+      title: "Certificates",
+      description: "Professional skills validated",
+      aosDelay: "200",
+      href: "#certificates",
+    },
+    {
+      icon: <GoTrophy size={24} className="text-slate-300" />,
+      number: "3",
+      title: "Years of Experience",
+      description: "Continuous learning journey",
+      aosDelay: "300",
+      href: "#about",
+    },
+  ];
+
   return (
-    <section id="about" className="py-16">
+    <section id="about" className="py-24 lg:py-32">
       <div className="container mx-auto px-4">
         <div className="w-full text-left">
           <div className="flex items-center gap-4 mb-4">
@@ -34,9 +66,10 @@ function About() {
               Diandra Firza Nasywan
             </span>
             , seorang lulusan Pengembangan Perangkat Lunak dan Gim dengan
-            ketertarikan mendalam pada Front-End Development. Saya berfokus
-            menciptakan pengalaman digital yang menarik dan selalu berusaha
-            memberikan solusi terbaik di setiap proyek yang saya kerjakan.
+            ketertarikan pada Front-End serta Back-End Development. Saya
+            berfokus menciptakan pengalaman digital yang menarik dan selalu
+            berusaha memberikan solusi terbaik di setiap proyek yang saya
+            kerjakan.
           </p>
           <p
             className="text-sm italic text-white-500 dark:text-[#ffff] mb-8 text-glow-dark"
@@ -63,6 +96,22 @@ function About() {
               <img src={iconproject} alt="Project Icon" className="w-6 h-6" />
               Lihat Proyek
             </a>
+          </div>
+
+          {/* DISINI YANG GW MAU OKE? BISA? */}
+          {/* INI DIA KARTU STATISTIKNYA */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 lg:mb-24">
+            {statsData.map((stat, index) => (
+              <StatCard
+                key={index}
+                icon={stat.icon}
+                number={stat.number}
+                title={stat.title}
+                description={stat.description}
+                aosDelay={stat.aosDelay}
+                href={stat.href}
+              />
+            ))}
           </div>
         </div>
 
