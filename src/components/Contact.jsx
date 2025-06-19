@@ -172,9 +172,9 @@ function Contact() {
       </div>
 
       <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h3 className="text-xl font-bold text-white mb-2">Feature Locked</h3>
+        <h3 className="text-xl font-bold text-white mb-2">NOTHING IS KNOWN!</h3>
         <p className="text-slate-300">
-          Maaf, untuk sekarang form ini belum bisa digunakan.
+          Error in SQL::[567890sjdshgg6789000] <br></br> UNKNWOWN API.
         </p>
       </InfoModal>
     </section>

@@ -1,16 +1,32 @@
-import React from "react";
+// src/components/InfoModal.jsx (Versi Alternatif)
+
+import React, { useEffect, useState } from "react";
 import { FiX, FiAlertTriangle } from "react-icons/fi";
 
 function InfoModal({ isOpen, onClose, children }) {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => setShow(true), 50); // Kasih jeda dikit biar transisi keliatan
+    } else {
+      setShow(false);
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm transition-opacity duration-300"
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
+        show ? "opacity-100" : "opacity-0"
+      }`}
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md m-4 bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl transition-all duration-300 transform scale-95 opacity-0 animate-scale-in"
+        className={`relative w-full max-w-md m-4 bg-slate-800/80 border border-slate-700 rounded-2xl shadow-xl transition-all duration-300 transform ${
+          show ? "scale-100 opacity-100" : "scale-95 opacity-0"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
