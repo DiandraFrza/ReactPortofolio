@@ -130,7 +130,7 @@ function Contact() {
                   htmlFor="name"
                   className="block mb-2 text-base font-medium text-[#9db2cf]"
                 >
-                  Name
+                  Name *
                 </label>
                 <input
                   type="text"
@@ -141,27 +141,12 @@ function Contact() {
                 />
               </div>
             </fieldset>
-            <div className="mb-6 w-full">
-              <label
-                htmlFor="email"
-                className="block mb-2 text-base font-medium text-[#9db2cf]"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition"
-              />
-            </div>
             <div className="mb-8 w-full">
               <label
                 htmlFor="message"
                 className="block mb-2 text-base font-medium text-[#9db2cf]"
               >
-                Message
+                Message *
               </label>
               <textarea
                 id="message"
