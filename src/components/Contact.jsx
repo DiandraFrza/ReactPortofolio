@@ -21,7 +21,7 @@ const testimonials = [
   {
     name: "aldi",
     quote:
-      "Mantap bang sudah keren banget websitenya, tapi gua mau kasih saran sedikit. Jadi untuk card projects dan certificates yang ada di page About itu bakal muncul 0 aja kalo misal buka web pertama kali di perangkat atau mode incognito, walaupun pas di refresh sudah muncul angka 13 dan 7 tapi bisa agak menganggu user. Nah ini terjadi karena firebasenya butuh waktu untuk async data dan menghitung jumlah data.",
+      "Mantap bang keren banget websitenya, tapi gua mau kasih saran sedikit. Tambhin bnyk animasi.",
     avatar: defaultImg,
   },
   {
