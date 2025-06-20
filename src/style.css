@@ -332,3 +332,65 @@ body {
     filter: drop-shadow(0 0 4px rgba(233, 213, 255, 0.5));
   }
 }
+
+/* Efek Glow Statis untuk Teks */
+.text-glow-purple {
+  /* text-shadow: [sumbu-x] [sumbu-y] [radius-blur] [warna]; */
+  text-shadow: 5px 8px 20px rgba(233, 213, 255, 0.644); /* Warna purple-400 dengan transparansi */
+}
+
+.text-glow-purpled {
+  /* text-shadow: [sumbu-x] [sumbu-y] [radius-blur] [warna]; */
+  text-shadow: 0px 0px 20px #94a3b8; /* Warna purple-400 dengan transparansi */
+}
+
+/* 5. Definisikan animasi untuk menggerakkan 'senter' */
+@keyframes spotlight-shine {
+  to {
+    /* Geser posisi background lapisan atas (senter) dari kanan ke kiri */
+    background-position: -200% center, 0 0;
+  }
+}
+
+/* Keyframes untuk animasi bayangan berdenyut */
+@keyframes pulsing-shadow {
+  0% {
+    /* Keadaan awal: bayangan tipis dan dekat */
+    filter: drop-shadow(0 0 4px rgba(233, 213, 255, 0.5));
+  }
+  70% {
+    /* Puncak animasi: bayangan menyebar (buyar) dan sedikit pudar */
+    filter: drop-shadow(0 0 20px rgba(233, 213, 255, 0.2));
+  }
+  100% {
+    /* Kembali ke keadaan awal untuk loop yang mulus */
+    filter: drop-shadow(0 0 4px rgba(233, 213, 255, 0.5));
+  }
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    border-color: #475569; /* slate-600 */
+  }
+  50% {
+    border-color: #a855f7; /* purple-500 */
+  }
+}
+
+.animate-pulse-border {
+  animation: pulse-border 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.8;
+    text-shadow: 0 0 8px rgba(192, 132, 252, 0.3);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 16px rgba(192, 132, 252, 0.6),
+      0 0 24px rgba(192, 132, 252, 0.4);
+  }
+}

@@ -105,90 +105,73 @@ function Contact() {
             </Swiper>
           </div>
 
-          <form
-            onClick={handleFormClick}
-            data-aos="fade-left"
-            data-aos-delay="200"
-            className="bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-[#9db2cf]"
-          >
-            <fieldset className="opacity-70">
-              <div className="mb-6 w-full">
-                <label
-                  htmlFor="name"
-                  className="block mb-2 text-base font-medium text-[#9db2cf]"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  disabled
-                  className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition cursor-not-allowed"
-                />
-              </div>
-              <div className="mb-8 w-full">
-                <label
-                  htmlFor="message"
-                  className="block mb-2 text-base font-medium text-[#9db2cf]"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  disabled
-                  className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition cursor-not-allowed"
-                ></textarea>
-              </div>
-              <div className="mb-8 w-full">More actions
-              <label
-                htmlFor="attachment"
-                className="block mb-2 text-base font-medium text-[#9db2cf]"
-              >
-                Upload Gambar (Optional)
-              </label>
-              <div className="flex items-center">
-                <label
-                  htmlFor="attachment"
-                  className="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
-                >
-                  Select File
-                </label>
-                <input
-                  type="file"
-                  id="attachment"
-                  name="attachment"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="hidden"
-                />
-                {fileName && (
-                  <span className="ml-4 text-sm text-slate-300 truncate min-w-0">
-                    {fileName}
-                  </span>
-                )}
-              </div>
-              <div className="w-full">
-                <button
-                  type="submit"
-                  disabled
-                  className="w-full rounded-md bg-gradient-to-r from-[#a777da] to-blue-600 py-3 px-8 text-base font-semibold text-white transition duration-300 transform cursor-not-allowed"
-                >
-                  Send Message
-                </button>
-              </div>
-            </fieldset>
-          </form>
+          <div onClick={handleFormClick}>
+            <form
+              data-aos="fade-left"
+              data-aos-delay="200"
+              className="bg-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-[#9db2cf]"
+            >
+              <fieldset className="opacity-70">
+                <div className="mb-6 w-full">
+                  <label
+                    htmlFor="name"
+                    className="mb-2 text-base font-medium text-[#9db2cf]"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    disabled
+                    className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition "
+                  />
+                </div>
+                <div className="mb-8 w-full">
+                  <label
+                    htmlFor="message"
+                    className="mb-2 text-base font-medium text-[#9db2cf]"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    disabled
+                    className="w-full rounded-md bg-slate-800 border border-[#9db2cf] p-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#9db2cf] transition "
+                  ></textarea>
+                </div>
+                <div className="mb-8 w-full">
+                  <label
+                    htmlFor="attachment"
+                    className="mb-2 text-base font-medium text-[#9db2cf]"
+                  >
+                    Upload Gambar (Optional)
+                  </label>
+                  <div className="flex items-center">
+                    <span className="bg-slate-700 text-white font-semibold py-2 px-4 rounded-md">
+                      Select File
+                    </span>
+                  </div>
+                </div>
+                <div className="w-full">
+                  <button
+                    type="submit"
+                    className="w-full rounded-md bg-gradient-to-r from-[#a777da] to-blue-600 py-3 px-8 text-base font-semibold text-white transition duration-300 transform "
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </div>
 
       <InfoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h3 className="text-xl font-bold text-white mb-2">NOTHING IS KNOWN!</h3>
-        <p className="text-slate-300">
-          Error in SQL::[567890sjdshgg6789000] <br></br> UNKNWOWN API.
-        </p>
+        <h3 className="text-xl font-bold text-white mb-2">Acces is danied.</h3>
+        <p className="text-slate-300">[ERROR CODE: 0x80070005]</p>
       </InfoModal>
     </section>
   );

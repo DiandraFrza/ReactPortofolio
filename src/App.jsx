@@ -1,11 +1,12 @@
 import "./App.css";
 
 // import { useEffect, useRef } from 'react';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 // import componenents
+import Preloader from "./components/Preloader";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -16,12 +17,41 @@ import Footer from "./components/Footer";
 import MorphingBlob from "./components/MorphingBlob";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    AOS.init({
-      duration: 1000, // durasi animasi
-      once: true, // animasi hanya terjadi sekali
-    });
-  }, []); //
+    document.body.style.overflow = "hidden";
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      document.body.style.overflow = "auto";
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading) {
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    }
+  }, [isLoading]);
+
+  if (isLoading) {
+    return <Preloader />;
+  }
+
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 800,
+  //     once: true,
+  //   });
+  // }, []);
   return (
     <div className="relative overflow-hidden">
       {" "}

@@ -1,8 +1,21 @@
-// src/components/CertificateCard.jsx
-
+import React from "react";
 import { FiArrowUpRight, FiAward } from "react-icons/fi";
 
-function CertificateCard({ imgSrc, title, issuer, credentialUrl, aosDelay }) {
+function CertificateCard({
+  imgSrc,
+  title,
+  issuer,
+  credentialUrl,
+  aosDelay,
+  orientation,
+}) {
+  const imageContainerClasses = "overflow-hidden aspect-video bg-slate-900/50";
+
+  const imageClasses = `
+    w-full h-full group-hover:scale-105 transition-transform duration-300
+    ${orientation === "portrait" ? "object-contain" : "object-cover"}
+  `;
+
   return (
     <a
       href={credentialUrl}
@@ -12,19 +25,16 @@ function CertificateCard({ imgSrc, title, issuer, credentialUrl, aosDelay }) {
       data-aos="fade-up"
       data-aos-delay={aosDelay}
     >
-      {/* Gambar Sertifikat */}
-      <div className="overflow-hidden aspect-video">
+      <div className={imageContainerClasses}>
         <img
           src={imgSrc}
           alt={`Certificate for ${title}`}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className={imageClasses}
         />
       </div>
 
-      {/* Konten Teks */}
       <div className="p-5">
         <h4 className="text-lg font-bold text-white mb-2">{title}</h4>
-
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2 text-sm text-slate-400">
             <FiAward />

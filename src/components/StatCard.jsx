@@ -2,10 +2,7 @@
 
 import { FiArrowUpRight } from "react-icons/fi";
 
-// Terima props 'href' yang baru
 function StatCard({ icon, number, title, description, aosDelay, href }) {
-  // Ganti tag 'div' paling luar jadi 'a' (anchor/link)
-  // Tambahin 'href={href}' dan class 'block'
   return (
     <a
       href={href}

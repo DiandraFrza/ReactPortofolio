@@ -1,33 +1,48 @@
 // src/components/Certificates.jsx
 
-// 1. Import komponen card dan gambar-gambar sertifikat lo
 import CertificateCard from "./CertificateCard";
-import certDicodingJs from "../assets/img/31343C.svg";
-import certGoogleIt from "../assets/img/31343C.svg";
-import certFreecodecamp from "../assets/img/31343C.svg";
+import certSpektrum from "../assets/certificate/spektrum.jpeg";
+import certCyberlabs from "../assets/certificate/cyberlabs.jpeg";
+import certDicoding from "../assets/certificate/webinardicoding.jpeg";
+import certJarvis from "../assets/certificate/webinarjarvis.jpeg";
+import certMediasosial from "../assets/certificate/webinarmediasosial.jpeg";
 
-// 2. Siapin data sertifikatnya di sini
 const certificatesData = [
   {
-    imgSrc: certDicodingJs,
-    title: "DUMMY",
-    issuer: "DUMMY",
+    imgSrc: certSpektrum,
+    title: "Praktek Kerja Lapangan (Internship)",
+    issuer: "PT Spektrum Kreasi Pratama",
     credentialUrl: "#",
     aosDelay: "100",
+    orientation: "portrait",
   },
   {
-    imgSrc: certGoogleIt,
-    title: "DUMMY",
-    issuer: "DUMMY",
+    imgSrc: certCyberlabs, // Sertifikat landscape
+    title: "Exploring Passion in Your Dream Tech Companies",
+    issuer: "CyberLabs",
     credentialUrl: "#",
     aosDelay: "200",
   },
   {
-    imgSrc: certFreecodecamp,
-    title: "DUMMY",
-    issuer: "fDUMMY",
+    imgSrc: certDicoding, // Sertifikat landscape
+    title: "Webinar Express JS & Programmer WFH",
+    issuer: "ID Koding",
     credentialUrl: "#",
-    aosDelay: "300",
+    aosDelay: "200",
+  },
+  {
+    imgSrc: certJarvis, // Sertifikat landscape
+    title: "Kreativita Tanpa Batas",
+    issuer: "Jarvis",
+    credentialUrl: "#",
+    aosDelay: "200",
+  },
+  {
+    imgSrc: certMediasosial, // Sertifikat landscape
+    title: "Literasi & Cakap Bermedia Sosial",
+    issuer: "SMK Citra Negara",
+    credentialUrl: "#",
+    aosDelay: "200",
   },
 ];
 

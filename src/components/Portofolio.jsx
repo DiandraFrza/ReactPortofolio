@@ -1,4 +1,4 @@
-// src/components/Showcase.jsx
+// src/components/Portofolio.jsx
 
 import { useState } from "react";
 // Import komponen lain
@@ -11,7 +11,7 @@ import ProjectIcon from "../assets/img/icon/project.svg";
 import SkillsIcon from "../assets/img/icon/skill-5.svg";
 import CertificateIcon from "../assets/img/icon/certificate.svg";
 
-function Showcase() {
+function Portofolio() {
   const [activeTab, setActiveTab] = useState("projects");
 
   const getButtonClass = (tabName) => {
@@ -77,4 +77,4 @@ function Showcase() {
   );
 }
 
-export default Showcase;
+export default Portofolio;

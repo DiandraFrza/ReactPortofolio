@@ -1,11 +1,6 @@
-import React from "react";
-
-// Direkomendasikan untuk mengimpor library AOS jika kamu menggunakannya di seluruh proyek
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
-// React.useEffect(() => {
-//   AOS.init();
-// }, []);
+import React, { useState } from "react";
+// Kita butuh ikon, jadi import dari react-icons
+import { FiGithub, FiExternalLink, FiPlusCircle } from "react-icons/fi";
 
 import laundryAppImg from "../assets/project/laundryapp.png";
 import portofolio3DImg from "../assets/project/3DPortofolio.png";
@@ -16,8 +11,7 @@ import ppdbCNImg from "../assets/project/nativePPDBCN.png";
 import spektrumImg from "../assets/project/wmsSpektrum.png";
 import TFaceAPIImg from "../assets/img/31343C.svg";
 import wmsImg from "../assets/img/31343C.svg";
-// --- Komponen Anak: ProjectCard ---
-// Komponen ini tidak diekspor secara default karena digunakan secara internal oleh ProjectsSection.
+
 const ProjectCard = ({
   imageUrl,
   title,
@@ -28,47 +22,44 @@ const ProjectCard = ({
 }) => {
   return (
     <div
-      className="bg-slate-800/50 rounded-xl bg-slate-100 p-4 shadow-md"
-      data-aos="zoom-out"
+      className="bg-slate-800/50 rounded-xl p-4 shadow-lg flex flex-col h-full"
+      data-aos="fade-up"
     >
       <img
         src={imageUrl}
         alt={title}
         className="mb-4 h-48 w-full rounded-lg object-cover"
-        data-aos="zoom-in"
         onError={(e) => {
-          // Fallback jika gambar gagal dimuat
           e.target.onerror = null;
           e.target.src =
             "https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found";
         }}
       />
-      <h3 className="text-xl font-bold text-[#94a3b8]" data-aos="flip-up">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm text-white" data-aos="flip-up">
-        {description}
-      </p>
-      <p className="mt-2 text-xs text-white" data-aos="flip-up">
-        Tech: {tech}
-      </p>
-      <div className="mt-4 flex gap-4" data-aos="zoom-out">
+      <div className="flex flex-col flex-grow">
+        <h3 className="text-xl font-bold text-slate-200">{title}</h3>
+        <p className="mt-2 text-sm text-slate-300 flex-grow">{description}</p>
+        <p className="mt-4 text-xs text-slate-400">
+          <span className="font-semibold">Tech:</span> {tech}
+        </p>
+      </div>
+      <div className="mt-5 flex gap-4">
         <a
           href={demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md bg-[#bb9fd8] px-4 py-2 font-semibold text-gray-800 transition hover:bg-[#c8b6db] hover:text-black"
+          className="sm:text-[16px] text-[13px] flex-1 text-center flex items-center justify-center gap-2 rounded-md bg-transparent border-2 border-[#bb9fd8] px-4 py-2 font-semibold text-[#bb9fd8] transition-all duration-300 hover:bg-[#bb9fd8] hover:text-slate-900"
         >
-          Live Demo
+          <FiExternalLink />
+          <span>Live Demo</span>
         </a>
-        {/*rgb(200, 183, 219) */}
         <a
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md bg-[#bb9fd8] px-4 py-2 font-semibold text-gray-800 transition hover:bg-[#c8b6db] hover:text-black"
+          className="sm:text-[16px] text-[14px] flex-1 text-center flex items-center justify-center gap-2 rounded-md bg-transparent border-2 border-slate-500 px-4 py-2 font-semibold text-slate-300 transition-all duration-300 hover:bg-slate-500 hover:text-slate-900"
         >
-          GitHub
+          <FiGithub />
+          <span>GitHub</span>
         </a>
       </div>
     </div>
@@ -94,7 +85,6 @@ const ProjectsSection = () => {
       demoUrl: "https://laundryfrzaa.publicvm.com/",
       githubUrl: "https://github.com/DiandraFrza/Laundryza.git",
     },
-
     {
       imageUrl: angkringanImg,
       title: "UMKM Angkringan",
@@ -160,19 +150,24 @@ const ProjectsSection = () => {
     },
   ];
 
+  // State untuk mengontrol jumlah proyek yang ditampilkan
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  // Fungsi untuk menambah jumlah proyek yang ditampilkan
+  const handleShowMore = () => {
+    setVisibleCount((prevCount) => prevCount + 4);
+  };
+
   return (
     <section id="projects" className="mt-10">
-      <div className="mb-18 text-center" data-aos="zoom-out">
-        <h3
-          className="mb-4 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-spotlight-effect2"
-          data-aos="flip-down"
-        >
+      <div className="mb-12 text-center" data-aos="zoom-in">
+        <h3 className="mb-4 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-spotlight-effect2">
           Project Made
         </h3>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {projects.slice(0, visibleCount).map((project, index) => (
           <ProjectCard
             key={index}
             imageUrl={project.imageUrl}
@@ -184,17 +179,29 @@ const ProjectsSection = () => {
           />
         ))}
       </div>
+
+      {visibleCount < projects.length && (
+        <div className="mt-12 text-center">
+          <button
+            onClick={handleShowMore}
+            className="group flex items-center justify-center gap-3 mx-auto rounded-full bg-slate-800/70 border-2 border-slate-600 px-8 py-3 font-semibold text-slate-200 transition-all duration-300 hover:border-purple-400 hover:text-white"
+            data-aos="fade-up"
+          >
+            <FiPlusCircle className="transition-transform duration-300 group-hover:rotate-90" />
+            <span>Show More</span>
+          </button>
+        </div>
+      )}
     </section>
   );
 };
 
-// --- Komponen Utama Aplikasi ---
-function App() {
+function Projects() {
   return (
-    <div className="App">
+    <div className="Projects">
       <ProjectsSection />
     </div>
   );
 }
 
-export default App;
+export default Projects;

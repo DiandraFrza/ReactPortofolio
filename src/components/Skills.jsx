@@ -1,77 +1,84 @@
-// src/components/Skills.jsx
+import React from "react";
+import SkillCategoryCard from "./SkillCategoryCard";
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiPhp,
+  SiNodedotjs,
+  SiReact,
+  SiVuedotjs,
+  SiLaravel,
+  SiCodeigniter,
+  SiGit,
+  SiGithub,
+  SiVercel,
+  SiFigma,
+  SiCanva,
+  SiLaragon,
+  SiXampp,
+  SiGamemaker,
+} from "react-icons/si";
+import { FiDatabase, FiShare2, FiFileText } from "react-icons/fi";
 
-import SkillBadge from "./SkillBadge"; // Import komponen badge
-
-import htmlIcon from "../assets/img/icon/html5.svg";
-import cssIcon from "../assets/img/icon/css3.svg";
-import phpIcon from "../assets/img/icon/php.svg";
-import javascriptIcon from "../assets/img/icon/javascript.svg";
-import gitIcon from "../assets/img/icon/git.svg";
-import githubIcon from "../assets/img/icon/github.svg";
-import codeigniterIcon from "../assets/img/icon/codeigniter.svg";
-import laravelIcon from "../assets/img/icon/laravel.svg";
-import gamemakerIcon from "../assets/img/icon/gamemaker.svg";
-import pwnIcon from "../assets/img/icon/pwn.svg";
-import mysqlIcon from "../assets/img/icon/mysql.svg";
-import figmaIcon from "../assets/img/icon/figma.svg";
-import canvaIcon from "../assets/img/icon/canva.svg";
-import writerIcon from "../assets/img/icon/libreofficewriter.svg";
-import calcIcon from "../assets/img/icon/libreofficecalc.svg";
-import laragonIcon from "../assets/img/icon/laragon.svg";
-import xamppIcon from "../assets/img/icon/xampp.svg";
-
-const skillsData = [
-  { name: "HTML", icon: htmlIcon },
-  { name: "CSS", icon: cssIcon },
-  { name: "PHP", icon: phpIcon },
-  { name: "JavaScript", icon: javascriptIcon },
-  { name: "Git", icon: gitIcon },
-  { name: "GitHub", icon: githubIcon },
-  { name: "CodeIgniter", icon: codeigniterIcon },
-  { name: "Laravel", icon: laravelIcon },
-  { name: "GameMaker", icon: gamemakerIcon },
-  { name: "PAWN Script", icon: pwnIcon },
-  { name: "MySQL", icon: mysqlIcon },
-];
-
-const toolsData = [
-  { name: "Figma", icon: figmaIcon },
-  { name: "Canva", icon: canvaIcon },
-  { name: "MS Word", icon: writerIcon },
-  { name: "MS Excel", icon: calcIcon },
-  { name: "Laragon", icon: laragonIcon },
-  { name: "XAMPP", icon: xamppIcon },
+const skillCategories = [
+  {
+    title: "Languages & Databases",
+    skills: [
+      { name: "HTML", icon: <SiHtml5 size={18} /> },
+      { name: "CSS", icon: <SiCss3 size={18} /> },
+      { name: "JavaScript", icon: <SiJavascript size={18} /> },
+      { name: "PHP", icon: <SiPhp size={18} /> },
+      { name: "SQL", icon: <FiDatabase size={18} /> },
+      { name: "PAWN Script", icon: <FiFileText size={18} /> },
+    ],
+  },
+  {
+    title: "Frameworks & Libraries",
+    skills: [
+      { name: "Node JS", icon: <SiNodedotjs size={18} /> },
+      { name: "React JS", icon: <SiReact size={18} /> },
+      { name: "Vue JS", icon: <SiVuedotjs size={18} /> },
+      { name: "Laravel", icon: <SiLaravel size={18} /> },
+      { name: "CodeIgniter", icon: <SiCodeigniter size={18} /> },
+      { name: "Rest API", icon: <FiShare2 size={18} /> },
+    ],
+  },
+  {
+    title: "Tools & Platforms",
+    skills: [
+      { name: "Git", icon: <SiGit size={18} /> },
+      { name: "GitHub", icon: <SiGithub size={18} /> },
+      { name: "GameMaker", icon: <SiGamemaker size={18} /> },
+      { name: "Vercel", icon: <SiVercel size={18} /> },
+      { name: "Figma", icon: <SiFigma size={18} /> },
+      { name: "Canva", icon: <SiCanva size={18} /> },
+      { name: "Laragon", icon: <SiLaragon size={18} /> },
+      { name: "XAMPP", icon: <SiXampp size={18} /> },
+    ],
+  },
 ];
 
 function Skills() {
   return (
     <div id="skills" className="mt-10">
       <h3
-        className="text-center mb-18 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-spotlight-effect2"
+        className="text-center mb-12 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-spotlight-effect2"
         data-aos="fade-down"
       >
         Skills & Abilities
       </h3>
-      <div className="flex flex-wrap items-center gap-4">
-        {skillsData.map((skill) => (
-          <SkillBadge key={skill.name} name={skill.name} icon={skill.icon} />
-        ))}
-      </div>
-
       <div
-        className="mt-6 mb-4 w-full h-1 bg-gray-300 dark:bg-gray-700"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-8"
         data-aos="zoom-out"
-      ></div>
-
-      <h3
-        className="text-center mb-4 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-glow-purpled"
-        data-aos="fade-down"
       >
-        Tools
-      </h3>
-      <div className="flex flex-wrap items-center gap-4">
-        {toolsData.map((tool) => (
-          <SkillBadge key={tool.name} name={tool.name} icon={tool.icon} />
+        {skillCategories.map((category, index) => (
+          <SkillCategoryCard
+            key={category.title}
+            title={category.title}
+            skills={category.skills}
+            isFeatured={index === 1}
+          />
         ))}
       </div>
     </div>

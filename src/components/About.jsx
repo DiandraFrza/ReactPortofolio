@@ -1,17 +1,29 @@
 // src/components/About.jsx
 
-import Skills from "./Skills";
-// import CV from "../assets/CV_Diandra.pdf";
+import { useState } from "react";
+
 import iconfile from "../assets/img/icon/file.svg";
 import iconproject from "../assets/img/icon/multimodal_handeye.svg";
-import Showcase from "./Showcase";
+import Portofolio from "./Portofolio";
 
 // Import komponen baru dan ikon-ikonnya
 import StatCard from "./StatCard";
 import { GoProjectSymlink, GoShieldCheck, GoTrophy } from "react-icons/go";
 
 function About() {
-  // Data buat kartu statistiknya, biar gampang diubah
+  const [setActiveTab] = useState("projects");
+
+  // const getButtonClass = (tabName) => {
+  //   return `
+  //     p-4 rounded-full font-semibold transition-all duration-300 transform relative z-10
+  //     ${
+  //       activeTab === tabName
+  //         ? "bg-[#94a3b8] text-white scale-110 shadow-lg"
+  //         : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+  //     }
+  //   `;
+  // };
+
   const statsData = [
     {
       icon: <GoProjectSymlink size={24} className="text-slate-300" />,
@@ -19,15 +31,15 @@ function About() {
       title: "Total Projects",
       description: "Innovative web solutions crafted",
       aosDelay: "100",
-      href: "#projects",
+      href: "#portofolio",
     },
     {
       icon: <GoShieldCheck size={24} className="text-slate-300" />,
-      number: "???",
+      number: "5",
       title: "Certificates",
       description: "Professional skills validated",
       aosDelay: "200",
-      href: "#certificates",
+      href: "#portofolio",
     },
     {
       icon: <GoTrophy size={24} className="text-slate-300" />,
@@ -80,7 +92,7 @@ function About() {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a
-              href="#"
+              href="https://drive.google.com/file/d/1h9wKPH-SJeRCEmC6mndYEKAPzFMxUQVV/view?usp=drive_link"
               className="w-full sm:w-auto bg-purple-300 text-black rounded-lg hover:bg-purple-200 px-6 py-3 text-sm font-medium dark:text-white transition duration-300 dark:hover:bg-slate-600 flex items-center justify-center gap-2 animate-attention"
               data-aos="fade-up"
             >
@@ -89,17 +101,17 @@ function About() {
             </a>
 
             <a
-              href="#projects"
+              href="#portofolio"
               className="w-full sm:w-auto hover:bg-slate-300 hover:text-black rounded-lg bg-slate-200 dark:bg-slate-700 px-6 py-3 text-sm font-medium text-slate-800 dark:text-white transition duration-300 hover:bg-gray-300 dark:hover:bg-slate-600 flex items-center justify-center gap-2 animate-attention"
               data-aos="fade-up"
+              onClick={() => setActiveTab("projects")}
+              // className={getButtonClass("projects")}
             >
               <img src={iconproject} alt="Project Icon" className="w-6 h-6" />
               Lihat Proyek
             </a>
           </div>
 
-          {/* DISINI YANG GW MAU OKE? BISA? */}
-          {/* INI DIA KARTU STATISTIKNYA */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 lg:mb-24">
             {statsData.map((stat, index) => (
               <StatCard
@@ -116,7 +128,7 @@ function About() {
         </div>
 
         <div className="w-full px-4">
-          <Showcase />
+          <Portofolio />
         </div>
       </div>
     </section>
