@@ -1,6 +1,4 @@
 import "./App.css";
-
-// import { useEffect, useRef } from 'react';
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,8 +10,6 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-
-// import components blob
 import MorphingBlob from "./components/MorphingBlob";
 
 function App() {
@@ -33,6 +29,31 @@ function App() {
     };
   }, []);
 
+  // useEffect Hook #2: Buat Anti-Copas
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && ["c", "u", "s"].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+        alert("EHEM");
+      }
+      if (e.key === "F12") {
+        e.preventDefault();
+        alert("Ngapain buka DevTools? Mau nyontek ya? ;)");
+      }
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
   useEffect(() => {
     if (!isLoading) {
       AOS.init({
@@ -46,17 +67,11 @@ function App() {
     return <Preloader />;
   }
 
-  // useEffect(() => {
-  //   AOS.init({
-  //     duration: 800,
-  //     once: true,
-  //   });
-  // }, []);
   return (
     <div className="relative overflow-hidden">
-      {" "}
       <MorphingBlob />
-      <main className="relative z-100">
+      <main className="relative z-10">
+        {" "}
         <Header />
         <Hero />
         <About />

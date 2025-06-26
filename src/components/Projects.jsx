@@ -2,7 +2,10 @@ import React, { useState } from "react";
 // Kita butuh ikon, jadi import dari react-icons
 import { FiGithub, FiExternalLink, FiPlusCircle } from "react-icons/fi";
 
+import AlertPopup from "./AlertPopup";
+
 import laundryAppImg from "../assets/project/laundryapp.png";
+import APITaskImg from "../assets/project/create_task.png";
 import portofolio3DImg from "../assets/project/3DPortofolio.png";
 import aventuraArcanaImg from "../assets/project/AventuraArcana.png";
 import angkringanImg from "../assets/project/landingPageAngkringan.png";
@@ -12,13 +15,14 @@ import spektrumImg from "../assets/project/wmsSpektrum.png";
 import TFaceAPIImg from "../assets/img/31343C.svg";
 import wmsImg from "../assets/img/31343C.svg";
 
+// Ganti komponen ProjectCard lo dengan yang ini
 const ProjectCard = ({
   imageUrl,
   title,
   description,
   tech,
-  demoUrl,
   githubUrl,
+  onDemoClick, // 1. Terima prop onDemoClick dari parent
 }) => {
   return (
     <div
@@ -43,15 +47,15 @@ const ProjectCard = ({
         </p>
       </div>
       <div className="mt-5 flex gap-4">
-        <a
-          href={demoUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="sm:text-[16px] text-[13px] flex-1 text-center flex items-center justify-center gap-2 rounded-md bg-transparent border-2 border-[#bb9fd8] px-4 py-2 font-semibold text-[#bb9fd8] transition-all duration-300 hover:bg-[#bb9fd8] hover:text-slate-900"
+        {/* 2. Tombol Live Demo diubah jadi <button> yang manggil onDemoClick */}
+        <button
+          onClick={onDemoClick}
+          className="sm:text-[16px] text-[11px] flex-1 text-center flex items-center justify-center gap-2 rounded-md bg-transparent border-2 border-[#bb9fd8] px-4 py-2 font-semibold text-[#bb9fd8] transition-all duration-300 hover:bg-[#bb9fd8] hover:text-slate-900"
         >
           <FiExternalLink />
           <span>Live Demo</span>
-        </a>
+        </button>
+
         <a
           href={githubUrl}
           target="_blank"
@@ -66,11 +70,22 @@ const ProjectCard = ({
   );
 };
 
-const ProjectsSection = () => {
+// Ganti komponen Projects lo dengan yang ini
+const Projects = () => {
   const projects = [
+    // ... (isi array projects lo, nggak usah diubah, udah bener) ...
+    {
+      imageUrl: APITaskImg,
+      title: "Laravel RBAC API",
+      description:
+        "RESTful API berbasis Laravel 12 dengan implementasi Role-Based Access Control (RBAC) dan frontend sederhana menggunakan Vanilla JS + Bootstrap.",
+      tech: "Sanctum, MySQL, Bootstrap, Vanilla JavaScript (Fetch API), Laravel Scheduler & Policy, PHPUnit (Testing)",
+      demoUrl: "#",
+      githubUrl: "https://github.com/DiandraFrza/laravel-rbac-dashboard",
+    },
     {
       imageUrl: spektrumImg,
-      title: "Inventory SpektrumKreasiPratama",
+      title: "WMS Spektrum Kreasi Pratama",
       description: "Membantu mengembangkan fitur di Website Resmi Spektrum.",
       tech: "Boostrap, Codeigniter 4, MySQL",
       demoUrl: "#",
@@ -150,16 +165,33 @@ const ProjectsSection = () => {
     },
   ];
 
-  // State untuk mengontrol jumlah proyek yang ditampilkan
   const [visibleCount, setVisibleCount] = useState(4);
+  const [popupMessage, setPopupMessage] = useState("");
 
-  // Fungsi untuk menambah jumlah proyek yang ditampilkan
+  // 3. Cukup deklarasiin handleShowMore sekali aja
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 4);
   };
 
+  const handleDemoClick = (url) => {
+    if (url === "#") {
+      setPopupMessage(
+        "Live demo untuk project ini belum tersedia atau sedang dalam pengembangan."
+      );
+    } else {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <section id="projects" className="mt-10">
+      {/* 4. Render AlertPopup di sini */}
+      <AlertPopup
+        isOpen={!!popupMessage}
+        message={popupMessage}
+        onClose={() => setPopupMessage("")}
+      />
+
       <div className="mb-12 text-center" data-aos="zoom-in">
         <h3 className="mb-4 text-3xl sm:text-6xl font-bold text-[var(--color-lavender)] text-spotlight-effect2">
           Project Made
@@ -174,8 +206,9 @@ const ProjectsSection = () => {
             title={project.title}
             description={project.description}
             tech={project.tech}
-            demoUrl={project.demoUrl}
             githubUrl={project.githubUrl}
+            // 5. Kirim fungsi handleDemoClick sebagai prop 'onDemoClick'
+            onDemoClick={() => handleDemoClick(project.demoUrl)}
           />
         ))}
       </div>
@@ -195,13 +228,4 @@ const ProjectsSection = () => {
     </section>
   );
 };
-
-function Projects() {
-  return (
-    <div className="Projects">
-      <ProjectsSection />
-    </div>
-  );
-}
-
 export default Projects;

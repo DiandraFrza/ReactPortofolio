@@ -92,7 +92,7 @@ function About() {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <a
-              href="https://drive.google.com/file/d/1h9wKPH-SJeRCEmC6mndYEKAPzFMxUQVV/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1xWjonCkjaJOZqL9CCGlfNremdmTDw8ne/view?usp=drive_link"
               className="w-full sm:w-auto bg-purple-300 text-black rounded-lg hover:bg-purple-200 px-6 py-3 text-sm font-medium dark:text-white transition duration-300 dark:hover:bg-slate-600 flex items-center justify-center gap-2 animate-attention"
               data-aos="fade-up"
             >

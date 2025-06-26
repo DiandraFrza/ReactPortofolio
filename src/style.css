@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+* {
+  user-select: none; /* Standar modern */
+  -webkit-user-select: none; /* Buat browser Safari/Chrome lama */
+  -moz-user-select: none; /* Buat Firefox */
+  -ms-user-select: none; /* Buat Internet Explorer/Edge lama */
+}
+
+/* Biar gambar juga nggak bisa di-drag */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
 #hamburger span {
   display: block;
   width: 24px; /* w-6 */
