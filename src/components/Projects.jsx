@@ -207,7 +207,6 @@ const Projects = () => {
             description={project.description}
             tech={project.tech}
             githubUrl={project.githubUrl}
-            // 5. Kirim fungsi handleDemoClick sebagai prop 'onDemoClick'
             onDemoClick={() => handleDemoClick(project.demoUrl)}
           />
         ))}
