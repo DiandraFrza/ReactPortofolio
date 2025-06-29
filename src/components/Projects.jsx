@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-// Kita butuh ikon, jadi import dari react-icons
+
 import { FiGithub, FiExternalLink, FiPlusCircle } from "react-icons/fi";
 
 import AlertPopup from "./AlertPopup";
 
+import donghubCloneImg from "../assets/project/donghubclone.png";
 import laundryAppImg from "../assets/project/laundryapp.png";
 import APITaskImg from "../assets/project/create_task.png";
 import portofolio3DImg from "../assets/project/3DPortofolio.png";
@@ -15,14 +16,13 @@ import spektrumImg from "../assets/project/wmsSpektrum.png";
 import TFaceAPIImg from "../assets/img/31343C.svg";
 import wmsImg from "../assets/img/31343C.svg";
 
-// Ganti komponen ProjectCard lo dengan yang ini
 const ProjectCard = ({
   imageUrl,
   title,
   description,
   tech,
   githubUrl,
-  onDemoClick, // 1. Terima prop onDemoClick dari parent
+  onDemoClick,
 }) => {
   return (
     <div
@@ -47,7 +47,6 @@ const ProjectCard = ({
         </p>
       </div>
       <div className="mt-5 flex gap-4">
-        {/* 2. Tombol Live Demo diubah jadi <button> yang manggil onDemoClick */}
         <button
           onClick={onDemoClick}
           className="sm:text-[16px] text-[11px] flex-1 text-center flex items-center justify-center gap-2 rounded-md bg-transparent border-2 border-[#bb9fd8] px-4 py-2 font-semibold text-[#bb9fd8] transition-all duration-300 hover:bg-[#bb9fd8] hover:text-slate-900"
@@ -70,10 +69,17 @@ const ProjectCard = ({
   );
 };
 
-// Ganti komponen Projects lo dengan yang ini
 const Projects = () => {
   const projects = [
-    // ... (isi array projects lo, nggak usah diubah, udah bener) ...
+    {
+      imageUrl: donghubCloneImg,
+      title: "Donghub UI Clone",
+      description:
+        "Kloning UI yang responsif dan interaktif dari sebuah website streaming, dibuat sebagai bagian dari technical test untuk posisi Frontend Developer. Project ini dibangun dari nol menggunakan React (Vite) dan Tailwind CSS, dengan fokus utama pada arsitektur berbasis komponen yang reusable dan detail UI yang presisi sesuai desain Figma.",
+      tech: "React.js, Vite, Tailwind CSS, React Router, React Icons",
+      demoUrl: "https://donghubclone.netlify.app/",
+      githubUrl: "https://github.com/DiandraFrza/donghubClone",
+    },
     {
       imageUrl: APITaskImg,
       title: "Laravel RBAC API",
@@ -168,7 +174,6 @@ const Projects = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const [popupMessage, setPopupMessage] = useState("");
 
-  // 3. Cukup deklarasiin handleShowMore sekali aja
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 4);
   };
@@ -185,7 +190,6 @@ const Projects = () => {
 
   return (
     <section id="projects" className="mt-10">
-      {/* 4. Render AlertPopup di sini */}
       <AlertPopup
         isOpen={!!popupMessage}
         message={popupMessage}

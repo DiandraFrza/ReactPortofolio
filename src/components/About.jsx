@@ -27,7 +27,7 @@ function About() {
   const statsData = [
     {
       icon: <GoProjectSymlink size={24} className="text-slate-300" />,
-      number: "10",
+      number: "11",
       title: "Total Projects",
       description: "Innovative web solutions crafted",
       aosDelay: "100",

@@ -42,7 +42,7 @@ function App() {
       }
       if (e.key === "F12") {
         e.preventDefault();
-        alert("Ngapain buka DevTools? Mau nyontek ya? ;)");
+        alert("YAH... NGEBUG");
       }
     };
 
